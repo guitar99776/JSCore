@@ -62,7 +62,7 @@ compareNames = null; // 解除对匿名函数的引用，以便释放内存
 某个函数被调用时，会创建一个执行环境（execution context）及相应的作用链。然后，使用arguments 和其他命名参数的值来初始化函数的活动对象（activation object）。但在作用域链中，外部函数的活动对象始终处于第二位，外部函数的外部函数的活动处于第三位，......直至作为作用域终点的全局执行环境。
 当createComparisonFunction()函数返回后，其执行环境的作用域链会被销毁，但它的活动对象仍然会留在内存中；直到匿名被销毁后，createComparisonFunction()的活动对象才会被销毁。  
 首先，创建的比较函数被保存在变量compareNames中。而通过将compareNames设置为等于null 解除该函数的引用，就等于通过垃圾回收历程将其清除。
-
+![image](https://github.com/guitar99776/JSCore/blob/develop/images/%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E9%93%BE.jpg)
 
 
 ## 闭包与变量  
