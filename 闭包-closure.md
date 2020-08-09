@@ -20,7 +20,7 @@
 
 闭包的由来：
 
-- 彼得·兰丁（Peter Landin）在 1964 年将术语“闭包”定义为一种包含环境成分和控制成分的实体，用于在他的 SECD 机器上对表达式求值。 Joel Moses 认为是 Landin 发明了“闭包”这一术语，用来指代某些其开放绑定（自由变量）已经由其语法环境完成闭合（或者绑定）的 lambda 表达式，从而形成了闭合的表达式，或称闭包。这一用法后来于 1975 年被 Sussman 和 Steele 在定义 Scheme 语言的时候予以采纳。并广为流传。
+- 彼得·兰丁（Peter Landin）在 1964 年将术语“闭包”定义为一种包含环境成分和控制成分的实体，用于在他的 SECD 机器上对表达式求值。 Joel Moses 认为是 Landin 发明了“闭包”这一术语，用来指代某些其开放绑定（自由变量）已经由其语法环境完成闭合（或者绑定）的 lambda 表达式，从而形成了闭合的表达式，或称闭包。这一用法后来于 1975 年被 Sussman 和 Steele 在定义 Scheme 语言的时候予以采纳。并广为流传。  
 
 为什么叫闭包？
 
@@ -28,7 +28,9 @@
 
 ## 闭包的表现形式
 
-如果函数 A 内定义了函数 B，那么如果 B 存在自由变量，且这些自由变量（在函数外部定义但在函数内被引用）没有在编译过程 B 中被优化掉，那么将产生闭包。
+如果函数 A 内定义了函数 B，那么如果 B 存在自由变量，且这些自由变量（在函数外部定义但在函数内被引用）没有在编译过程 B 中被优化掉，那么将产生闭包。  
+自由变量：一个变量，既不是函数参数，也不是函数的本地变量，则称为 自由变量。
+
 
 个人理解：
 
@@ -39,7 +41,7 @@
 
 示例：
 
-```
+```javascript
 function createComparisonFunction(propertyName) {
     return function (object1, object2) {
         var value1 = object1[propertyName];
@@ -81,7 +83,7 @@ compareNames = null; // 解除对匿名函数的引用，以便释放内存
 
 示例：
 
-```
+```javascript
 function createFunctions(){
     var result=[];
 
@@ -106,7 +108,7 @@ function createFunctions(){
 ## 常见使用闭包的场景
 
 - 模仿块级作用域
-  ```
+  ``` javascript
   (function(){
       //块级作用域
   })()
@@ -118,7 +120,7 @@ function createFunctions(){
 
   示例：
 
-  ```
+  ```javascript
   function MyObject(){
       // 私有变量和私有函数
       var privateVariable = 10;
@@ -151,7 +153,7 @@ function createFunctions(){
 
   注意：并不会所有的闭包都会发生内存泄漏。只有**大量**引用的变量对象无法释放的情况下才会发生内存泄漏（重点，只有很多变量对象无法释放的情况下，才会造成内存泄露），比如：
 
-  ```
+  ```javascript
   // 示例一：（会发生内存泄漏）
   function A(){
       let name="易烊千玺";
